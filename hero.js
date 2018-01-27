@@ -4,3 +4,9 @@ const Hero = function(name, health, favouriteFood) {
   this.favouriteFood = favouriteFood;
   this.tasks = [];
 };
+
+Hero.prototype.speak = function() {
+  return `Hi, I'm a ${this.name}!`;
+};
+
+module.exports = Hero;
