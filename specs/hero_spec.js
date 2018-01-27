@@ -15,6 +15,11 @@ describe('Hero tests', function() {
   })
 
   it('Hero can speak', function(){
-    assert.strictEqual(testHero.speak(), "Hi, I'm a Knight!")
+    assert.strictEqual(testHero.speak(), "Hi, I'm a Knight!");
+  })
+
+  it('Can add a task to hero', function(){
+    testHero.addTask(testTask);
+    assert.deepEqual(testHero.tasks, [testTask]);
   })
 })
