@@ -14,12 +14,17 @@ describe('Hero tests', function() {
     testHero = new Hero("Knight", 100, "Steak");
   })
 
-  it('Hero can speak', function(){
+  it('Hero can speak', function() {
     assert.strictEqual(testHero.speak(), "Hi, I'm a Knight!");
   })
 
-  it('Can add a task to hero', function(){
+  it('Can add a task to hero', function() {
     testHero.addTask(testTask);
     assert.deepEqual(testHero.tasks, [testTask]);
+  })
+
+  it('Can eat food', function() {
+    testHero.eatFood(testFood);
+    assert.strictEqual(testHero.health, 110);
   })
 })
