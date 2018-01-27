@@ -5,11 +5,13 @@ const Task = require('../task.js');
 
 describe('Hero tests', function() {
   var testHero;
-  var testFood;
+  var testFoodOne;
+  var testFoodTwo;
   var testTask;
 
   beforeEach(function() {
-    testFood = new Food("Burger", 10);
+    testFoodOne = new Food("Steak", 10);
+    testFoodTwo = new Food("Chicken", 10);
     testTask = new Task("Easy", "High", "Gold");
     testHero = new Hero("Knight", 100, "Steak");
   })
@@ -23,8 +25,21 @@ describe('Hero tests', function() {
     assert.deepEqual(testHero.tasks, [testTask]);
   })
 
+  it('Can check favourite food', function() {
+    assert.strictEqual(testHero.isFavouriteFood(testFoodOne), true)
+  })
+
+  it('Can check is not favourite food', function() {
+    assert.strictEqual(testHero.isFavouriteFood(testFoodTwo), false)
+  })
+
   it('Can eat food', function() {
-    testHero.eatFood(testFood);
+    testHero.eatFood(testFoodTwo);
     assert.strictEqual(testHero.health, 110);
+  })
+
+  it('Can eat favourite food', function() {
+    testHero.eatFood(testFoodOne);
+    assert.strictEqual(testHero.health, 115);
   })
 })

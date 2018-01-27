@@ -11,10 +11,18 @@ Hero.prototype.speak = function() {
 
 Hero.prototype.addTask = function(task) {
   this.tasks.push(task);
-}
+};
+
+Hero.prototype.isFavouriteFood = function(food) {
+  return food.name === this.favouriteFood;
+};
 
 Hero.prototype.eatFood = function(food) {
-  this.health += food.replenishmentValue;
-}
+  if (this.isFavouriteFood(food)) {
+    this.health += food.replenishmentValue * 1.5;
+  } else {
+    this.health += food.replenishmentValue;
+  }
+};
 
 module.exports = Hero;
