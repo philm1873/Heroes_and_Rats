@@ -17,12 +17,16 @@ Hero.prototype.isFavouriteFood = function(food) {
   return food.name === this.favouriteFood;
 };
 
-Hero.prototype.eatFood = function(food) {
+Hero.prototype.eatSafeFood = function(food) {
   if (this.isFavouriteFood(food)) {
     this.health += food.replenishmentValue * 1.5;
   } else {
     this.health += food.replenishmentValue;
   }
+};
+
+Hero.prototype.eatPoisonedFood = function(food) {
+  this.health -= food.replenishmentValue;
 };
 
 Hero.prototype.sortTasks = function(field) {
@@ -42,6 +46,14 @@ Hero.prototype.viewCompleteTasks = function() {
     return element.completed;
   })
 };
+
+Hero.prototype.eatFood = function(food) {
+  if (food.poisoned) {
+    this.eatPoisonedFood(food);
+  } else {
+    this.eatSafeFood(food);
+  }
+}
 
 
 module.exports = Hero;
