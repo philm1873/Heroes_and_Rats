@@ -52,4 +52,23 @@ describe('Hero tests', function() {
   it('Can sort tasks by difficulty', function() {
     assert.deepEqual(testHero.sortTasks("Difficulty"), [testTaskOne, testTaskTwo, testTaskThree]);
   })
+
+  it('Can sort tasks by urgency', function() {
+    assert.deepEqual(testHero.sortTasks("Urgency"), [testTaskThree, testTaskTwo, testTaskOne]);
+  })
+
+  it('Can sort tasks by reward', function() {
+    assert.deepEqual(testHero.sortTasks("Reward"), [testTaskThree, testTaskOne, testTaskTwo]);
+  })
+
+  it('Can view incomplete tasks', function() {
+    testTaskOne.markComplete();
+    assert.deepEqual(testHero.viewIncompleteTasks(), [testTaskTwo, testTaskThree]);
+  })
+
+  it('Can view complete tasks', function() {
+    testTaskOne.markComplete();
+    assert.deepEqual(testHero.viewCompleteTasks(), [testTaskOne]);
+  })
+
 })

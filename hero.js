@@ -29,7 +29,19 @@ Hero.prototype.sortTasks = function(field) {
   return this.tasks.sort(function(a,b) {
     return a.compareTo(b, field);
   })
-}
+};
+
+Hero.prototype.viewIncompleteTasks = function() {
+  return this.tasks.filter(function(element) {
+    return !element.completed;
+  })
+};
+
+Hero.prototype.viewCompleteTasks = function() {
+  return this.tasks.filter(function(element) {
+    return element.completed;
+  })
+};
 
 
 module.exports = Hero;
