@@ -53,7 +53,7 @@ Hero.prototype.eatFood = function(food) {
   } else {
     this.eatSafeFood(food);
   }
-}
+};
 
 
 module.exports = Hero;
